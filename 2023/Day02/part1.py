@@ -1,0 +1,53 @@
+class Round:
+    def __init__(self, red=0, green=0, blue=0):
+        self.red = red
+        self.green = green
+        self.blue = blue
+
+    def __str__(self):
+        return f'red: {red}, green: {green}, blue: {blue}'
+
+
+def is_legal(round: Round):
+    return round.red <= 12 and round.green <= 13 and round.blue <= 14
+
+filename = "input.txt"
+
+games = []
+with open(filename, 'r') as file:
+    for line in file:
+        games.append(line.strip())
+
+processed_games = []
+for game in games:
+    round_data = game.split(":")[1].strip().split('; ')
+    rounds = []
+    for round in round_data:
+        cubes = round.split(',')
+        red = green = blue = 0
+        for cube in cubes:
+            tmp = cube.strip().split(' ')
+            if tmp[1] == 'blue':
+                blue = int(tmp[0])
+            if tmp[1] == 'red':
+                red = int(tmp[0])
+            if tmp[1] == 'green':
+                green = int(tmp[0])
+        rounds.append(Round(red, green, blue))
+    processed_games.append(rounds)
+
+game_id = 1
+summa = 0
+for game in processed_games:
+    flag = True
+    for round in game:
+        if(not is_legal(round)):
+            flag = False
+            break
+        else:
+            continue
+    if flag:
+        summa += game_id
+    game_id += 1
+
+print(summa)

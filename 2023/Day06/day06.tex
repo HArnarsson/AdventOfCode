@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\selectlanguage{english}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\graphicspath{}
+\usepackage{amsmath} 
+\usepackage{amsthm,amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\usepackage{mathtools}
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+\allowdisplaybreaks
+\renewcommand{\arraystretch}{0.8}
+\newcommand*\evala[3]{\left.#1\right\rvert_{#2}^{#3}}
+\newcommand*\Eval[3]{#1\Big|_{#2}^{#3}}
+\newcommand*\Dm[0]{\text{Dm}}
+\usepackage{xcolor}
+\newcommand\LHR{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny LHR}}}{=}}}
+\begin{document}
+
+\title{Advent of Code - Day06}
+\author{Hilmir Vilberg Arnarsson}
+\date{\today}
+
+\maketitle
+\clearpage
+\setlength{\parskip}{1em}
+
+
+\section*{The Problem}
+This problem is relatively simple to understand. Let $x$ be the amount of time that the button is held down.
+Then, $x$ is also the velocity of the boat. Furthermore, the distance travelled will be:
+$$f(x) = (t-x)x = tx -x^2$$
+where $t$ is the length of the race in milliseconds. We want to find the number of ways
+for $f(x) > d$ where $d$ is the record length in the race. Therefore, we get:
+\begin{align*}
+    f(x) > d &\Longleftrightarrow x^2 - tx + d < 0\\
+    &\Longleftrightarrow (x-r_1)(x-r_2) < 0 \\
+    &\Longleftrightarrow r_1 < x < r_2\; (*)
+\end{align*}
+where 
+$$
+r_1 = \frac{t - \sqrt{t^2-4d}}{2},\; r_2 = \frac{t + \sqrt{t^2-4d}}{2}.
+$$
+We then simply have to find positive integer solutions for $(*)$
+
+\end{document}

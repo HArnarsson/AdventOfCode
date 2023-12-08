@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\selectlanguage{english}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\graphicspath{}
+\usepackage{amsmath} 
+\usepackage{amsthm,amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\usepackage{mathtools}
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+\allowdisplaybreaks
+\renewcommand{\arraystretch}{0.8}
+\newcommand*\evala[3]{\left.#1\right\rvert_{#2}^{#3}}
+\newcommand*\Eval[3]{#1\Big|_{#2}^{#3}}
+\newcommand*\Dm[0]{\text{Dm}}
+\usepackage{xcolor}
+\newcommand\LHR{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny LHR}}}{=}}}
+\begin{document}
+
+\fontfamily{qcr}\selectfont
+\title{Advent of Code - Day08}
+\author{Hilmir Vilberg Arnarsson}
+\date{\today}
+
+\maketitle
+\clearpage
+\setlength{\parskip}{1em}
+
+
+\section*{Part 1}
+Part 1 is mostly trivial, we can simply just bruteforce it.
+
+\section*{Part 2}
+Part 2 is more interesting. The cycles for each of the nodes that end with A are constant,
+i.e., once we get to something that ends with Z in $c$ instructions, iterating through the nodes 
+again with $c$ instructions puts us in the same place. We therefore calculate the cycles for each 
+of the nodes that end with A and then find the $LCM$ of those nodes, or the least common multiple.
+We use a Sieve of Eratosthenes to find the primes that we use in the $LCM$ alg.
+
+\end{document}

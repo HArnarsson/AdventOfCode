@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\selectlanguage{english}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\graphicspath{}
+\usepackage{amsmath} 
+\usepackage{amsthm,amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\usepackage{mathtools}
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+\allowdisplaybreaks
+\renewcommand{\arraystretch}{0.8}
+\newcommand*\evala[3]{\left.#1\right\rvert_{#2}^{#3}}
+\newcommand*\Eval[3]{#1\Big|_{#2}^{#3}}
+\newcommand*\Dm[0]{\text{Dm}}
+\usepackage{xcolor}
+\newcommand\LHR{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny LHR}}}{=}}}
+\begin{document}
+
+\fontfamily{qcr}\selectfont
+\title{Advent of Code - Day05}
+\author{Hilmir Vilberg Arnarsson}
+\date{\today}
+
+\maketitle
+\clearpage
+\setlength{\parskip}{1em}
+
+
+\section*{Introduction}
+The motivation behind this solution is simple.
+We essentially have $n$ piecewise-defined functions that we need 
+to compose with one another. We will introduce some notation.
+Let $I_j$ be be the $j$-th interval for a given piecewise function or mapping. 
+Note that if $s$ is the source, $d$ is the destination, and $l$ the length
+of the interval, we can define $f$ on the interval like so:
+$$\forall x \in [s; s+l): f(x) = (d-s) + x, x\in \N$$
+We want to find the relationship between the $I_j$ and the $I_{j+1}$ intervals.
+\section*{The Algorithm}
+
+
+\end{document}
