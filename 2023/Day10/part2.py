@@ -34,7 +34,7 @@ for i in range(len(arr)):
             break
         if flag:
             break
-
+arr[start[0]][start[1]] = '|' # hardcoded, should probably do dynamically but i don't feel like it
 visited = {start}
 
 flag = False
@@ -105,19 +105,18 @@ while True:
 # floodfilling does not work without expanding, so i just gave up
 
 # the following is kinda unintuitive, see pdf
-
 inside = 0
 for i in range(len(arr)):
-    parity = 0
+    intersections = 0
     for j in range(len(arr[i])):
         # curr is not in loop
         if (i, j) not in visited:
-            # if parity is odd, we are inside the pipe
-            if parity % 2:
+            # if intersections is odd, we are inside the pipe
+            if intersections % 2:
                 inside += 1
             continue
         # we are in loop
         if arr[i][j] in ['|', 'F', '7']:
-            parity += 1
+            intersections += 1
 
 print(inside)
