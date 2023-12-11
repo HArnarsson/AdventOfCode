@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\selectlanguage{english}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\graphicspath{}
+\usepackage{amsmath} 
+\usepackage{amsthm,amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\usepackage{mathtools}
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+\allowdisplaybreaks
+\renewcommand{\arraystretch}{0.8}
+\newcommand*\evala[3]{\left.#1\right\rvert_{#2}^{#3}}
+\newcommand*\Eval[3]{#1\Big|_{#2}^{#3}}
+\newcommand*\Dm[0]{\text{Dm}}
+\usepackage{xcolor}
+\newcommand\LHR{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny LHR}}}{=}}}
+\begin{document}
+\title{Advent of Code - Day10}
+\author{Hilmir Vilberg Arnarsson}
+\date{\today}
+
+\maketitle
+\clearpage
+\setlength{\parskip}{1em}
+
+
+\section*{Part 1}
+Part 1 is self-explanatory.
+
+\section*{Part 2}
+Part 2 is very tricky. Initially I tried flood-filling but this did not work since there are some 
+weird edge cases where something is outside but has no neighbors. One could probably expand the grid somehow
+to get rid of those so you kind of "squeeze" between pipes, but that seemed very tricky. I admit that I
+looked at the subreddit for some inspiration. The solution is very elegant but not very intutive at first glance.
+
+Let us introduce the notion of \textit{parity}. If we start from the left in a row, then we must be outside.
+This is because an edge cannot possibly be inside the loop on the edge. If we look at the simple case where
+there are no bendy pieces, only walls, i.e., "-" or "|", then it should be apparent that if we cross a wall once
+then we are inside the loop if the wall is part of the loop. If we then cross another wall we will be outside of 
+the loop. Thus if we increase the parity by one each time we cross a wall, then we will be inside if the parity is odd.
+
+The complications arise when we consider the bendy pieces. It is not simply enough to increase the parity when
+we cross one due to portions like this: "F--7" or "L--J". However, we should increase the parity if we cross
+a section like this "F--J". The trick is to select one of the cases and increase the parity in that case, i.e.,
+if we cross an "F" or a "7" we increase the parity. If we increase it with an "F", then our parity will only be odd
+if we cross a "J" or "L" next. If we cross a "7" next, then we increase it again and it will be even again. Super elegant.
+
+\end{document}
