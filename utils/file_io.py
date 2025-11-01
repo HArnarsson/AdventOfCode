@@ -18,3 +18,18 @@ def get_lines(filename, is_demo):
         for line in file:
             lines.append(line.strip())
     return lines
+
+def get_input():
+    if os.getenv("DEV") == "1":
+        filename = "smallinput.txt"
+    else:
+        filename = "input.txt"
+    
+    caller_frame = inspect.stack()[1]
+    caller_file = caller_frame.filename
+    caller_dir = os.path.dirname(os.path.abspath(caller_file))
+
+    file_path = os.path.join(caller_dir, filename)
+
+    with open(file_path, "r") as file:
+        return file.read()
